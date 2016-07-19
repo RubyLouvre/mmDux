@@ -1,6 +1,7 @@
 var ActionTypes = {
     INIT: '@@redux/INIT'
 }
+createStore.ActionTypes = ActionTypes
 /*
  * 
  redux.createStore(reducer, initialState) 传入了reducer、initialState，

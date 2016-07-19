@@ -74,3 +74,32 @@ mmDux 的核心思想之一就是，它不直接修改整个应用的状态树�
 而根 reducer 会把这些副本组合起来形成一颗新的状态树。最后根 reducer 将新的状态树传回给 store，
 store 再将新的状态树设为最终的状态。
 
+Middleware
+middleware 其实就是高阶函数，作用于 dispatch 返回一个新的 dispatch（附加了该中间件功能）。
+可以形式化为：newDispatch = middleware1(middleware2(...(dispatch)...))。
+
+```
+//redux-thunk
+function createThunkMiddleware(extraArgument) {
+  return function({ dispatch, getState }) {
+        return function(next){
+            return function(action){
+                if (typeof action === 'function') {
+                  return action(dispatch, getState, extraArgument);
+                }
+
+                return next(action);
+            }
+        }
+     } 
+
+  };
+}
+
+var thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+
+module.exports = thunk
+
+```
+
