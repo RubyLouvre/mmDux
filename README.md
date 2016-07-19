@@ -24,7 +24,7 @@ var store = mmDux.createStore(function(){
 console.log(store)
 
 ```
-![](./store.png)
+![](./doc/store.png)
 
 ##ActionCreator
 
