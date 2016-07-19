@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../dist/avalon.js"></script>
+        <script src="../dist/mmDux.js"></script>
+        <script>
+
+            var reducer_1 = function (state, action) {
+                avalon.log('reducer_1 was called with state', state, 'and action', action)
+                if (typeof state === 'undefined') {
+                    return {}
+                }
+
+                return state;
+            }
+            var store_1 = mmDux.createStore(reducer_1)
+            avalon.log('store_1 state after initialization:', store_1.getState())
+
+            var reducer_2 = function (state, action) {
+                state = state || {}
+                avalon.log('reducer_2 was called with state', state, 'and action', action)
+
+                return state;
+            }
+
+            var store_2 = mmDux.createStore(reducer_2)
+            avalon.log('store_2 state after initialization:', store_2.getState())
+
+
+            var reducer_3 = function (state, action) {
+                state = state || {}
+                avalon.log('reducer_3 was called with state', state, 'and action', action)
+
+                switch (action.type) {
+                    case 'SAY_SOMETHING':
+                        return avalon.mix({}, state, {
+                            message: action.value
+                        })
+                    default:
+                        return state;
+                }
+            }
+
+            var store_3 = mmDux.createStore(reducer_3)
+// Output: reducer_3 was called with state {} and action { type: '@@redux/INIT' }
+
+            avalon.log('store_3 state after initialization:', store_3.getState())
+
+        </script>
+    </head>
+    <body>
+        <div>mmDux.createStore与store.getState的使用</div>
+    </body>
+</html>

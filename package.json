@@ -1,0 +1,26 @@
+{
+  "name": "mmDux",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RubyLouvre/mmDux.git"
+  },
+  "version": "0.9.0",
+  "description": "avalon的redux",
+  "main": "dist/index.js",
+  "keywords": [
+    "javascript",
+    "redux",
+    "avalon"
+  ],
+  "dependencies": {
+      "avalon2": "^2.1.0",
+      "webpack": "^1.13.1"
+  },
+  "devDependencies": {
+    "avalon2": "^2.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/RubyLouvre/mmDux/issues"
+  }
+}
