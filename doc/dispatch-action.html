@@ -10,31 +10,32 @@
 
           
 var userReducer = function (state = {}, action) {
+    state = state || {}
     console.log('userReducer was called with state', state, 'and action', action)
 
     switch (action.type) {
         case 'SET_NAME':
-            return {
-                ...state,
+            return avalon.mix({},state,{
                 name: action.name
-            }
+            })
         default:
             return state;
     }
 }
-var itemsReducer = function (state = [], action) {
+var itemsReducer = function (state, action) {
+    state = state || []
     console.log('itemsReducer was called with state', state, 'and action', action)
 
     switch (action.type) {
         case 'ADD_ITEM':
             return avalon.mix([],state,action.item)
-            ]
         default:
             return state;
     }
 }
 
-import { createStore, combineReducers } from 'redux'
+var createStore = mmDux.createStore
+var combineReducers = mmDux.combineReducers
 
 var reducer = combineReducers({
     user: userReducer,
